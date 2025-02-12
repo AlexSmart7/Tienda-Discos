@@ -366,7 +366,7 @@ nav a {
 }
 
 #locales {
-    background-color:bisque ;
+    background-color:lightgray ;
 }
 
 #locales ul {
@@ -382,13 +382,10 @@ nav a {
 
 }
 
-#servicios {
-
-}
 
 #servicios .contenedor-serv {
     text-align: center;
-    background-color: bisque;
+    background-color:lightgray ;
     padding: 30px;
     height: 100%;
     border-radius: 15px;
@@ -403,6 +400,33 @@ footer p {
     text-align: center;
 }
 
-table{
+
+.ocultar {
+    display: none;
+}
+
+.contenedor-tabla {
+    width: 100%; /* Ajusta el ancho del contenedor */
+    max-height: 300px; /* Altura máxima antes de activar el scroll vertical */
+    overflow: auto; /* Activa la barra de desplazamiento si es necesario */
+    border: 1px solid #ccc; /* Borde opcional */
+}
+
+table {
     color: white;
+    width: 100%; /* Asegura que la tabla use todo el ancho disponible */
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: white; /* Fondo para que el encabezado no se mezcle */
+    z-index: 10;
 }

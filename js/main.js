@@ -1,31 +1,131 @@
 console.log("main")
 
 
-class Disco {
-    constructor(Id,Nombre,Artista,Precio,Año){
-        this.id = Id
-        this.Nombre  = Nombre
-        this.Artista = Artista
-        this.Precio = Precio
-        this.Año = Año
+const discosTable = document.getElementById('tableDiscos') //Listado de Discos
+const inputSearch = document.getElementById('search') //Buscador
+const rows = document.getElementsByTagName('tr')
+const buttonRegistro = document.getElementById("registroDisco") // Registar Disco
+buttonRegistro.addEventListener("click", registroDisco )
+inputSearch.addEventListener('keyup', (e) => {
+    let query = e.target.value
+    let search = new RegExp(query, "i")
+    for (let i = 0; i < rows.length; i++){
+        let valor = rows[i]
+        if(search.test(valor.innerText)) {
+            valor.classList.remove('ocultar')
+        } else {
+            valor.classList.add('ocultar')
+        }
     }
-}
+})
 
 const listaDiscos = []
 
-function crearDisco(){
-    let id = listaDiscos.length +1    
-    let Nombre = document.getElementById("iNombre").value
-    let Artista = document.getElementById("iArtista").value
-    let Precio = document.getElementById("iPrecio").value
-    let Año = document.getElementById("iAño").value
-    var registro = new Disco (id,Nombre,Artista,Precio,Año)
-    listaDiscos.push(registro)    
+class Disco {
+    
+    constructor(ID,Name,Art,Price,Year){
+        this.ID= ID
+        this.Name  = Name
+        this.Art = Art
+        this.Price = Price
+        this.Year = Year
+    }
+}
 
-console.log(listaDiscos)
+listaDiscos.push(new Disco(1,"Abbey Road","Beatles",1500,"1969"))
+listaDiscos.push(new Disco(2,"Unpluggeth New York","Nirvana",2000,"2002"))
+listaDiscos.push(new Disco(3,"Californication","Red Hot Chilli Peapers",1200,"1999"))
+listaDiscos.push(new Disco(4,"Black","Pear Jam",1000,"1997"))
+listaDiscos.push(new Disco(5,"Metallica","Metallica",1300,"1998"))
+renderTable()
 
 
-var tablaRegistros = document.getElementById("registroDiscos")
+function registroDisco(){
+
+    let UUID = listaDiscos[listaDiscos.length -1].ID +1  
+    let nameDisco = document.getElementById("inputName").value
+    let artDisco = document.getElementById("inputArt").value
+    let priceDisco = document.getElementById("inputPrice").value
+    let yearDisco = document.getElementById("inputYear").value
+    const disco = new Disco (UUID,nameDisco,artDisco,priceDisco,yearDisco)
+    listaDiscos.push(disco)    
+
+swal({
+    title: "Success",
+    text: "Registrado",
+    timer: 2000,
+    icon: "success",
+});
+renderTable();
+clearInputs();
+
+}
+
+function clearInputs(){
+        document.getElementById("inputName").value = ""
+        document.getElementById("inputArt").value = ""
+        document.getElementById("inputPrice").value = ""
+        document.getElementById("inputYear").value = ""
+}
+
+function confirmDelete(IDdisco){
+    let msg = "Seguro de Eliminar?"
+    swal(msg,{
+        icon: "warning",
+        buttons: {
+            NO: {
+                text: "NO",
+                value: "NO",
+            },
+            SI: {
+                text: "SI",
+                value: "SI",
+            },
+        },
+    }).then(function(value){
+        switch (value) {
+            case "SI":
+                DeleteItem(IDdisco)
+                break;
+            case "NO":
+                break;
+        }
+    })
+}
+
+function DeleteItem(ID){
+    for(let i = 0 ; i < listaDiscos.length ; i++){
+        if (listaDiscos[i].ID == ID){
+            listaDiscos.splice(i,1);
+            swal ({
+                title: "Success",
+                text: "Eliminado",
+                timer: 3000,
+                icon: "success",
+            });
+            renderTable()
+        }
+    }
+}
+
+function renderTable(){
+    const bodyTable = document.getElementById('discosList')
+    bodyTable.innerHTML = "";
+    let = rowBody = ""
+    for(let i = 0 ; i < listaDiscos.length ; i++){
+        rowBody += `<tr><td>${listaDiscos[i].ID}</td>
+                        <td>${listaDiscos[i].Name}</td>
+                        <td>${listaDiscos[i].Art}</td>
+                        <td>${listaDiscos[i].Price}</td>
+                        <td>${listaDiscos[i].Year}</td>
+                        <td><button type="button" class="btn btn-sm btn-light"
+                        onclick="confirmDelete('${listaDiscos[i].ID}')"><i class="fa
+                        fa-trash-o fa-2x text-danger" aria-hidden="true"></i></button>
+                        </td></tr>`
+    }
+    document.getElementById("discosList").innerHTML = rowBody
+}
+/*var tablaRegistros = document.getElementById("registroDiscos")
 
 for(let i= listaDiscos.length-1; i<listaDiscos.length; i++){
 
@@ -72,7 +172,7 @@ for(let i= listaDiscos.length-1; i<listaDiscos.length; i++){
 //crearDisco("Californication","Red Hot Chilli Peapers",1200,"1999")
 //crearDisco("Black","Pear Jam",1000,"1997")
 //crearDisco("Metallica","Metallica",1300,"1998")
-
+*/
 
 function buscarNombre(){
 
@@ -130,8 +230,4 @@ function buscarArtista(){
     }
     
 
-function resetBusqueda(){
-    document.getElementById("bNombre").value = ""
-    document.getElementById("bArtista").value = ""
-    document.getElementById("bPrecio").value = ""
-}
+
