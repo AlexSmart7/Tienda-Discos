@@ -22,16 +22,16 @@
 <body>
 
   <header class="cabecera">
-    <div class="container">
-      <a href="index.html" class="link-logo">
-        <img class="logo" src="img/logo.jpg" width="200" height="210" alt="Logo" />
+    <div class="container-nav">
+      <a href="#" class="link-logo">
+        <img class="logo" src="img/logo.jpg" alt="Logo" />
       </a>
       <nav class="menu">
         <a href="#formulario">Registro</a>
         <a href="#locales">Sucursales</a>
         <a href="#servicios">Servicios</a>
       </nav>
-      <a href="" class="hamb"><i class="fa-solid fa-bars"></i></a>
+      <a href="#" class="hamb"><i class="fa-solid fa-bars"></i></a>
     </div>
   </header>
 
@@ -40,7 +40,7 @@
       <img class="banner-home" src="img/banner.jpg" width="1880" height="1245" alt="" />
       <div class="container">
         <div class="fila">
-          <div class="columna columna-50">
+          <div class="columna ">
             <h1>D'Music Retro</h1>
             <p>
               Contamos con los mejores ejemplares de musica retro.
@@ -177,7 +177,7 @@
               sanidad establecidas por el tema del covid-19, ya que nuestra
               prioridad es la seguridad de nuestros clientes.
             </p>
-            <ul>
+            <ul class="d-flex">
               <li>Diversidad de Estilos</li>
               <li>Ediciones Especiales</li>
               <li>Colecciones Exclusivas</li>
@@ -211,40 +211,30 @@
   
 <!--  Seccion de Servicios  -->
 
-    <section id="servicios">
-      <div class="container-full">
-        <div class="fila fila-centrada">
-          <div class="columna columna-50 margen-arriba">
-            <h2 class="titulos">Servicios</h2>
-          </div>
-        </div>
-        <div class="fila margen-arriba">
-          <div class="columna columna-33">
-            <div class="contenedor-serv">
+<section id="servicios">
+  <div class="container">
+      <h2 class="titulo">Servicios</h2>
+      <div class="grid-servicios">
+          <div class="servicio">
               <i class="fa-solid fa-credit-card"></i>
-              <h3>Tarjeta Debito y Credito</h3>
-              <p>Aceptamos pago con cualquier tipo de tarjetas de Debito y Credito (Visa o Master Card)</p>
-            </div>
+              <h3>Tarjeta Débito y Crédito</h3>
+              <p>Aceptamos pago con cualquier tipo de tarjetas de Débito y Crédito (Visa o MasterCard).</p>
           </div>
-          <div class="columna columna-33">
-            <div class="contenedor-serv">
+          <div class="servicio">
               <i class="fa-solid fa-clock-rotate-left"></i>
               <h3>Sistema de Apartado</h3>
-              <p>Contamos con sistema de apartado de hasta 3 meses, con el 15% del costo total</p>
-            </div>
+              <p>Contamos con sistema de apartado de hasta 3 meses, con el 15% del costo total.</p>
           </div>
-          <div class="columna columna-33">
-            <div class="contenedor-serv">
+          <div class="servicio">
               <i class="fa-solid fa-motorcycle"></i>
-              <h3>Envio Paqueteria</h3>
-              <p>Servicio de Envio por paqueteria al interior de la republica. </p>
-            </div>
+              <h3>Envío por Paquetería</h3>
+              <p>Servicio de envío por paquetería al interior de la República.</p>
           </div>
-        </div>
       </div>
-    </section>
-  
-  </main>
+  </div>
+</section>
+
+</main>
   
   <footer>
     <div class="container">
@@ -253,7 +243,7 @@
       </div>
     </div>
   </footer>
-
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

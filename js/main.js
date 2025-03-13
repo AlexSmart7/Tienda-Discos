@@ -1,11 +1,16 @@
 console.log("main")
 
 
+    document.querySelector(".hamb").addEventListener("click", function() {
+        document.querySelector(".menu").classList.toggle("active");
+    });
+
 const discosTable = document.getElementById('tableDiscos') //Listado de Discos
 const inputSearch = document.getElementById('search') //Buscador
 const rows = document.getElementsByTagName('tr')
 const buttonRegistro = document.getElementById("registroDisco") // Registar Disco
 buttonRegistro.addEventListener("click", registroDisco )
+
 inputSearch.addEventListener('keyup', (e) => {
     let query = e.target.value
     let search = new RegExp(query, "i")
